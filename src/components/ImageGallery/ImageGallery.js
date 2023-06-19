@@ -46,7 +46,7 @@ class ImageGallery extends Component {
     }
   }
   render() {
-    const { status, response } = this.state;
+    const { status, response, error } = this.state;
     const { onBtnClick, page, openModal } = this.props;
 
     if (status === 'pending') {
@@ -92,6 +92,19 @@ class ImageGallery extends Component {
           </ul>
           <Button onClick={onBtnClick} />
         </>
+      );
+
+    if (status === 'rejected')
+      return (
+        <h1
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          {error.message}
+        </h1>
       );
   }
 }
